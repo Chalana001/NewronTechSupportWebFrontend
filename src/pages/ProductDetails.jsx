@@ -4,11 +4,16 @@ import { API_URL } from '../services/api'
 import ProductImage from '../components/ProductImage'
 import ProductInfo from '../components/ProductInfo'
 import '../styles/productdetails.css'
-import WhatsAppButton from '../components/WhatsAppButton'
+
+import ProductCard from '../components/ProductCard'
+
+
 
 export default function ProductDetails() {
   const { itemCode } = useParams()
   const [item, setItem] = useState(null)
+
+  const [items, setItems] = useState([])
 
   useEffect(() => {
     let mounted = true
@@ -16,36 +21,52 @@ export default function ProductDetails() {
     fetch(`${API_URL}/${itemCode}`)
       .then((r) => r.json())
       .then((data) => mounted && setItem(data))
-      .catch(() => {})
+      .catch(() => { })
     return () => (mounted = false)
   }, [itemCode])
 
+  // fetch all items (for related section)
+  useEffect(() => {
+    fetch(`${API_URL}/getallitems`)
+      .then((r) => r.json())
+      .then((data) => setItems(data))
+      .catch(() => { })
+  }, [])
+
   if (!item) return <main className="page container"><p className="muted">Loading...</p></main>
 
+  const relatedItems = items.filter(
+    (i) =>
+      i.category === item.category &&
+      i.itemCode !== item.itemCode
+  )
+
+  console.log('Related Items:', relatedItems)
   return (
     <main className="page container detail-page">
       <div className="detail-grid">
         <ProductImage imgUrl={item.imgUrl} name={item.name} />
         <ProductInfo item={item} />
       </div>
+
+{/* RELATED ITEMS */}
+{Array.isArray(relatedItems) && relatedItems.length > 0 && (
+  <section className="related-section">
+
+    <div className="related-divider">
+      <span>More in {item.category}</span>
+    </div>
+
+    <div className="related-grid">
+      {relatedItems.map(item => (
+                  <ProductCard key={item.itemCode} item={item} />
+                ))}
+    </div>
+
+  </section>
+)}
+
+
     </main>
-
-
-    // <main className="page container detail-page">
-    //   <div className="detail-grid">
-    //     <div className="detail-media">
-    //       <img src={item.imgUrl} alt={item.name} />
-    //     </div>
-    //     <div className="detail-info">
-    //       <h1>{item.name}</h1>
-    //       <p className="muted">{item.category} • {item.brand}</p>
-    //       <div className="price-large">Rs.{item.price}</div>
-    //       <p className="description">{item.description}</p>
-    //       <div style={{marginTop:50}}>
-    //         <WhatsAppButton message={`I'm interested in ${item.name} (code ${item.itemCode}). Price: Rs. ${item.price}`} />
-    //       </div>
-    //     </div>
-    //   </div>
-    // </main>
   )
 }

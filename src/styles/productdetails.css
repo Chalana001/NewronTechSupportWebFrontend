@@ -51,3 +51,53 @@
 .action-area {
   margin-top: 50px;
 }
+
+/* ========================= */
+/* RELATED ITEMS SECTION     */
+/* ========================= */
+
+.related-section {
+  margin-top: 80px;
+  padding-bottom: 80px;
+}
+
+.related-divider {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  color: var(--text-muted);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.related-divider::before,
+.related-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+}
+
+.related-divider span {
+  padding: 0 20px;
+  text-transform: uppercase;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+.related-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
