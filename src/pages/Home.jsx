@@ -1,6 +1,17 @@
+import { useState } from 'react'
 import '../styles/home.css'
 
 export default function Home() {
+	const [menuActive, setMenuActive] = useState(false)
+
+	const handleHamburgerClick = () => {
+		setMenuActive(!menuActive)
+	}
+
+	const closeMenu = () => {
+		setMenuActive(false)
+	}
+
 	return (
 		<div>
 			<nav className="navbar">
@@ -9,24 +20,24 @@ export default function Home() {
 						<i className="fas fa-microchip"></i>
 						<span className="brand-text">Newron Tech Support</span>
 					</div>
-					<ul className="nav-menu">
+					<ul className={`nav-menu ${menuActive ? 'active' : ''}`}>
 						<li className="nav-item">
-							<a href="#home" className="nav-link">Home</a>
+							<a href="#home" className="nav-link" onClick={closeMenu}>Home</a>
 						</li>
 						<li className="nav-item">
-							<a href="/products" className="nav-link">Products</a>
+							<a href="/products" className="nav-link" onClick={closeMenu}>Products</a>
 						</li>
 						<li className="nav-item">
-							<a href="#services" className="nav-link">Services</a>
+							<a href="#services" className="nav-link" onClick={closeMenu}>Services</a>
 						</li>
 						<li className="nav-item">
-							<a href="/about" className="nav-link">About</a>
+							<a href="/about" className="nav-link" onClick={closeMenu}>About</a>
 						</li>
 						<li className="nav-item">
-							<a href="#contact" className="nav-link">Contact</a>
+							<a href="#contact" className="nav-link" onClick={closeMenu}>Contact</a>
 						</li>
 					</ul>
-					<div className="hamburger">
+					<div className={`hamburger ${menuActive ? 'active' : ''}`} onClick={handleHamburgerClick}>
 						<span className="bar"></span>
 						<span className="bar"></span>
 						<span className="bar"></span>
