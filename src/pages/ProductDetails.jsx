@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { API_URL } from '../services/api'
+import ProductImage from '../components/ProductImage'
+import ProductInfo from '../components/ProductInfo'
+import '../styles/productdetails.css'
 import WhatsAppButton from '../components/WhatsAppButton'
 
 export default function ProductDetails() {
@@ -22,19 +25,27 @@ export default function ProductDetails() {
   return (
     <main className="page container detail-page">
       <div className="detail-grid">
-        <div className="detail-media">
-          <img src={item.imgUrl} alt={item.name} />
-        </div>
-        <div className="detail-info">
-          <h1>{item.name}</h1>
-          <p className="muted">{item.category} • {item.brand}</p>
-          <div className="price-large">₹{item.price}</div>
-          <p className="description">{item.description}</p>
-          <div style={{marginTop:20}}>
-            <WhatsAppButton message={`I'm interested in ${item.name} (code ${item.itemCode}). Price: ${item.price}`} />
-          </div>
-        </div>
+        <ProductImage imgUrl={item.imgUrl} name={item.name} />
+        <ProductInfo item={item} />
       </div>
     </main>
+
+
+    // <main className="page container detail-page">
+    //   <div className="detail-grid">
+    //     <div className="detail-media">
+    //       <img src={item.imgUrl} alt={item.name} />
+    //     </div>
+    //     <div className="detail-info">
+    //       <h1>{item.name}</h1>
+    //       <p className="muted">{item.category} • {item.brand}</p>
+    //       <div className="price-large">Rs.{item.price}</div>
+    //       <p className="description">{item.description}</p>
+    //       <div style={{marginTop:50}}>
+    //         <WhatsAppButton message={`I'm interested in ${item.name} (code ${item.itemCode}). Price: Rs. ${item.price}`} />
+    //       </div>
+    //     </div>
+    //   </div>
+    // </main>
   )
 }

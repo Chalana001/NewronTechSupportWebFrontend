@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import '../styles/home.css'
 import Navbar from '../components/Navbar'
-import logo from '../assets/logo.png'
 
 export default function Home() {
 	const [menuActive, setMenuActive] = useState(false)
@@ -155,7 +154,7 @@ export default function Home() {
 										</div>
 									</div>
 								</div>
-								<div className="tech-support-actions">
+								<div className="hero-buttons">
 									<a href="#contact" className="btn btn-primary">Get Support Now</a>
 									<a href="tel:+94704589764" className="btn btn-outline">
 										<i className="fas fa-phone" />
