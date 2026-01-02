@@ -41,101 +41,7 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: var(--bg-glass);
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    padding: 1rem 0;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    min-width: 120px;
-}
-
-.nav-logo i {
-    margin-bottom: 0.1em;
-    color: #00d4ff;
-    font-size: 1.7rem;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-weight: 500;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.nav-link:hover {
-    color: var(--primary-color);
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-primary);
-    margin: 3px 0;
-    transition: 0.3s;
-}
-
-.hamburger.active .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
+/* Navbar styles have been moved to src/styles/navbar.css */
 
 /* Hero Section */
 .hero {
@@ -833,7 +739,7 @@ input[type="submit"].btn-primary {
 .social-links {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
 }
 
 .social-links a {
@@ -863,49 +769,10 @@ input[type="submit"].btn-primary {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    /* Navigation */
-    .hamburger {
-        display: flex;
-        z-index: 1001;
-    }
-
-    .nav-menu {
-        display: none;
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: var(--bg-glass);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        gap: 0;
-        padding: 2rem 0;
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border-color);
-        max-height: calc(100vh - 70px);
-        overflow-y: auto;
-    }
-
-    .nav-menu.active {
-        left: 0;
-        display: flex;
-    }
-
-    .nav-item {
-        padding: 1rem;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    .nav-link {
-        display: block;
-        padding: 0.5rem 0;
-    }
-
     /* Hero Section */
     .hero {
         min-height: 80vh;
-        padding-top: 60px;
+        padding-top: 72px;
     }
 
     .hero-container {
@@ -2002,14 +1869,42 @@ html {
 @keyframes particleOrbit {/* Lines 1697-1708 omitted */}
 
 /* Logo Image Styles */
-.site-logo {/* Lines 1712-1716 omitted */}
+.site-logo {
+    width: 280px;
+    max-width: 46vw;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
 
-.nav-logo, .footer-logo {/* Lines 1719-1724 omitted */}
+.nav-logo, .footer-logo {
+    display: flex;
+    align-items: center;
+}
 
-.brand-text {/* Lines 1727-1732 omitted */}
+/* Slightly larger logo in footer */
+.footer-logo .site-logo {
+    width: 320px;
+    max-width: 40vw;
+}
 
-.nav-logo i, .footer-logo i {/* Lines 1735-1738 omitted */}
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .site-logo { width: 220px; }
+    .footer-logo .site-logo { width: 240px; }
+}
 
-/* Remove old logo text styles */
-.logo-main, .logo-sub, .logo-swoosh, .brand-accent, .brand-accent::after { display: none !important; }
+@media (max-width: 640px) {
+    .site-logo { width: 160px; }
+    .nav-logo { min-width: auto; }
+    .nav-menu { gap: 1rem; }
+}
+
+/* Hide old text/icon branding when using image */
+.brand-text,
+.brand-name,
+.nav-logo i,
+.footer-logo i {
+    display: none !important;
+}
 

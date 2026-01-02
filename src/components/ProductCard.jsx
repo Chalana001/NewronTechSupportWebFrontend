@@ -12,7 +12,7 @@ export default function ProductCard({ item }) {
         <h3 className="card-title">{item.name}</h3>
         <p className="card-meta">{item.category} • {item.brand}</p>
         <div className="card-bottom">
-          <div className="price">₹{item.price}</div>
+          <div className="price">Rs.{item.price}</div>
           <WhatsAppButton message={`I'm interested in ${item.name} (code ${item.itemCode})`} small />
         </div>
       </div>

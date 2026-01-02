@@ -10,6 +10,9 @@
 body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:var(--text);background:linear-gradient(180deg,var(--bg),#05060a);-webkit-font-smoothing:antialiased}
 .container{max-width:1100px;margin:0 auto;padding:16px}
 
+/* Ensure pages start below fixed navbar */
+.page { padding-top: 80px; }
+
 /* Navbar */
 .nav{background:linear-gradient(90deg,rgba(124,58,237,0.06),transparent);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
@@ -60,8 +63,8 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
 
 /* Shop page layout */
 .shop-header{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0}
-.search input{background:var(--surface);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:var(--text);min-width:200px}
-.category-filter select{background:var(--surface);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:var(--text)}
+.search input{background:var(--surface);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:var(--text);min-width:200px;position:relative;z-index:2000;pointer-events:auto}
+.category-filter select{background:var(--surface);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:var(--text);position:relative;z-index:2000;pointer-events:auto}
 
 /* Product detail */
 .detail-grid{display:grid;grid-template-columns:1fr;gap:16px;padding:16px}

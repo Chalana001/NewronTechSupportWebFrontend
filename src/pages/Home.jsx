@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import '../styles/home.css'
+import Navbar from '../components/Navbar'
+import logo from '../assets/logo.png'
 
 export default function Home() {
 	const [menuActive, setMenuActive] = useState(false)
@@ -14,36 +16,7 @@ export default function Home() {
 
 	return (
 		<div>
-			<nav className="navbar">
-				<div className="nav-container">
-					<div className="nav-logo">
-						<i className="fas fa-microchip"></i>
-						<span className="brand-text">Newron Tech Support</span>
-					</div>
-					<ul className={`nav-menu ${menuActive ? 'active' : ''}`}>
-						<li className="nav-item">
-							<a href="#home" className="nav-link" onClick={closeMenu}>Home</a>
-						</li>
-						<li className="nav-item">
-							<a href="/products" className="nav-link" onClick={closeMenu}>Products</a>
-						</li>
-						<li className="nav-item">
-							<a href="#services" className="nav-link" onClick={closeMenu}>Services</a>
-						</li>
-						<li className="nav-item">
-							<a href="/about" className="nav-link" onClick={closeMenu}>About</a>
-						</li>
-						<li className="nav-item">
-							<a href="#contact" className="nav-link" onClick={closeMenu}>Contact</a>
-						</li>
-					</ul>
-					<div className={`hamburger ${menuActive ? 'active' : ''}`} onClick={handleHamburgerClick}>
-						<span className="bar"></span>
-						<span className="bar"></span>
-						<span className="bar"></span>
-					</div>
-				</div>
-			</nav>
+			<Navbar />
 
 			<main>
 				<section id="home" className="hero">
@@ -78,7 +51,7 @@ export default function Home() {
 							<div className="feature-card">
 								<i className="fas fa-shield-alt" />
 								<h3>Quality Guaranteed</h3>
-								<p>All products come with warranty and expert support</p>
+								<p>All shop come with warranty and expert support</p>
 							</div>
 							<div className="feature-card">
 								<i className="fas fa-shipping-fast" />
@@ -293,11 +266,8 @@ export default function Home() {
 					<div className="container">
 						<div className="footer-content">
 							<div className="footer-section">
-								<div className="footer-logo">
-									<i className="fas fa-microchip" />
-									<span className="brand-text">Newron Tech Support</span>
-								</div>
-								<p>Your trusted partner for all things tech. Quality products, expert service, competitive prices.</p>
+								<h3>Newron Tech Support</h3>
+								<p>Your trusted partner for all things tech. Quality shop, expert service, competitive prices.</p>
 								<div className="social-links">
 									<a href="#"><i className="fab fa-facebook" /></a>
 									<a href="#"><i className="fab fa-twitter" /></a>
@@ -309,20 +279,20 @@ export default function Home() {
 								<h3>Quick Links</h3>
 								<ul>
 									<li><a href="#home">Home</a></li>
-									<li><a href="/products">Products</a></li>
+									<li><a href="/shop">Shop</a></li>
 									<li><a href="#services">Services</a></li>
 									<li><a href="/about">About</a></li>
 									<li><a href="#contact">Contact</a></li>
 								</ul>
 							</div>
 							<div className="footer-section">
-								<h3>Products</h3>
+								<h3>shop</h3>
 								<ul>
-									<li><a href="/products">Computer Parts</a></li>
-									<li><a href="/products">PC Builds</a></li>
-									<li><a href="/products">Mobile Phones</a></li>
-									<li><a href="/products">Accessories</a></li>
-									<li><a href="/products">Gaming Gear</a></li>
+									<li><a href="/shop">Computer Parts</a></li>
+									<li><a href="/shop">PC Builds</a></li>
+									<li><a href="/shop">Mobile Phones</a></li>
+									<li><a href="/shop">Accessories</a></li>
+									<li><a href="/shop">Gaming Gear</a></li>
 								</ul>
 							</div>
 							<div className="footer-section">
@@ -345,4 +315,3 @@ export default function Home() {
 		</div>
 	)
 }
-
